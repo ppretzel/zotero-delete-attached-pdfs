@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Delete Attached PDFs",
-  "version": "2.0",
+  "version": "1.0",
   "description": "Delete attached PDFs from the selected library entries.",
   "author": "ppretzel",
   "homepage_url": "https://github.com/ppretzel/zotero-delete-attached-pdfs",
@@ -10,7 +10,7 @@
       "id": "zotero-delete-attached-pdfs@ppretzel",
       "update_url": "https://github.com/ppretzel/zotero-delete-attached-pdfs",
       "strict_min_version": "7.0",
-      "strict_max_version": "7.1.*"
+      "strict_max_version": "7.*"
     }
   }
 }
