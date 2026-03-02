@@ -1,8 +1,6 @@
 # Delete Attached PDFs – Zotero Plugin
 
-A small Zotero plugin that adds a right-click menu entry to delete all PDF attachments from selected library entries – while keeping the Zotero entries themselves intact.
-
-Useful for freeing up storage space or cleaning up PDF attachments without losing your bibliography.
+A small [Zotero](https://www.zotero.org) plugin that adds a right-click menu entry to delete all PDF attachments from selected library entries. Useful for freeing up storage space or cleaning up PDF attachments.
 
 ---
 
@@ -10,7 +8,6 @@ Useful for freeing up storage space or cleaning up PDF attachments without losin
 
 - New **"Delete all PDFs"** option in the right-click context menu
 - Only appears when the selected entries actually have PDF attachments
-- Shows a confirmation dialog with a preview of the affected files before deleting
 - Only removes PDF attachments – Zotero entries, metadata, and other attachments are left untouched
 
 ---
@@ -30,32 +27,6 @@ Useful for freeing up storage space or cleaning up PDF attachments without losin
 
 ---
 
-## Usage
-
-1. Select one or more entries in your Zotero library
-2. Right-click → **"Delete all PDFs"**
-3. Review the confirmation dialog and confirm
-
----
-
-## Project structure
-
-```
-├── src/
-│   ├── manifest.json   # Plugin metadata
-│   └── bootstrap.js    # All plugin logic
-└── dist/
-    └── delete-attached-pdfs.xpi   # Ready-to-install plugin
-```
-
----
-
 ## Note
 
-This plugin was built entirely through **vibe coding** with AI assistance – including debugging a sneaky typo (`https::` instead of `https://`) in `manifest.json`. The code works, but was not written by hand in any traditional sense.
-
----
-
-## License
-
-MIT
+This plugin was built entirely through **vibe coding** with AI assistance and with only minimal verification of the actual code. I did not notice any bugs while using it, but cannot guarantee correct behavior in corner cases.
