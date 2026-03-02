@@ -2,8 +2,6 @@
 
 A small [Zotero](https://www.zotero.org) plugin that adds a right-click menu entry to delete all PDF attachments from selected library entries. Useful for freeing up storage space or cleaning up PDF attachments.
 
----
-
 ## Features
 
 - New **"Delete all PDFs"** option in the right-click context menu
@@ -11,13 +9,9 @@ A small [Zotero](https://www.zotero.org) plugin that adds a right-click menu ent
 - Choose between **Move to Trash** or **Delete Permanently** at confirmation
 - Only removes PDF attachments – Zotero entries, metadata, and other attachments are left untouched
 
----
-
 ## Requirements
 
 - Zotero 7.0 or newer
-
----
 
 ## Installation
 
@@ -25,8 +19,6 @@ A small [Zotero](https://www.zotero.org) plugin that adds a right-click menu ent
 2. In Zotero: **Tools → Plugins → Install Plugin From File…**
 3. Select the downloaded `.xpi` file
 4. Restart Zotero
-
----
 
 ## Note
 
