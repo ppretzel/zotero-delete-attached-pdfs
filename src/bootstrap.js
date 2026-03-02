@@ -108,18 +108,29 @@ var DeleteAttachedPDFs = {
       .join("\n");
     if (pdfs.length > 5) preview += `\n  … and ${pdfs.length - 5} more`;
 
-    let confirmed = win.confirm(
-      `Permanently delete the following ${pdfs.length} PDF attachment${pdfs.length > 1 ? "s" : ""}?\n` +
-      preview
+    let result = Services.prompt.confirmEx(
+      win,
+      "Delete Attached PDFs",
+      `What would you like to do with the following ${pdfs.length} PDF attachment${pdfs.length > 1 ? "s" : ""}?\n` + preview,
+      (Services.prompt.BUTTON_POS_0 * Services.prompt.BUTTON_TITLE_IS_STRING) +
+      (Services.prompt.BUTTON_POS_1 * Services.prompt.BUTTON_TITLE_IS_STRING) +
+      (Services.prompt.BUTTON_POS_2 * Services.prompt.BUTTON_TITLE_IS_STRING),
+      "Delete Permanently", "Cancel", "Move to Trash",
+      null, {}
     );
-    if (!confirmed) return;
+    if (result === 1) return;  // Cancel or Escape
 
     let deleted = 0;
     let errors = 0;
 
     for (let att of pdfs) {
       try {
-        await att.eraseTx();
+        if (result === 0) {
+          await att.eraseTx();
+        } else {
+          att.deleted = true;
+          await att.saveTx();
+        }
         deleted++;
       } catch (e) {
         this.log("Error deleting attachment " + att.id + ": " + e);
@@ -129,10 +140,8 @@ var DeleteAttachedPDFs = {
 
     this.log(`Deleted ${deleted}, errors: ${errors}`);
 
-    if (errors === 0) {
-      win.alert(`✓ ${deleted} PDF${deleted > 1 ? "s" : ""} successfully deleted.`);
-    } else {
-      win.alert(`${deleted} PDF${deleted > 1 ? "s" : ""} deleted, but ${errors} error${errors > 1 ? "s" : ""} occurred.\nSee the Zotero debug log for details.`);
+    if (errors > 0) {
+      win.alert(`${deleted} PDF${deleted > 1 ? "s" : ""} processed, but ${errors} error${errors > 1 ? "s" : ""} occurred.\nSee the Zotero debug log for details.`);
     }
   }
 };
@@ -142,7 +151,7 @@ var DeleteAttachedPDFs = {
 function install() {}
 function uninstall() {}
 
-function startup({ id, version, rootURI }) {
+function startup({ version }) {
   DeleteAttachedPDFs.log("Starting up v" + version);
   Zotero.uiReadyPromise.then(() => {
     DeleteAttachedPDFs.addToAllWindows();

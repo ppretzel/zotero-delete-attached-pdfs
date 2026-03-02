@@ -8,6 +8,7 @@ A small [Zotero](https://www.zotero.org) plugin that adds a right-click menu ent
 
 - New **"Delete all PDFs"** option in the right-click context menu
 - Only appears when the selected entries actually have PDF attachments
+- Choose between **Move to Trash** or **Delete Permanently** at confirmation
 - Only removes PDF attachments – Zotero entries, metadata, and other attachments are left untouched
 
 ---
